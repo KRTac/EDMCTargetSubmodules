@@ -18,8 +18,6 @@ from theme import theme
 import myNotebook as nb
 from config import config
 
-from util import PLUGIN_NAME
-
 
 listener = None
 keyboard = Controller()
@@ -29,7 +27,7 @@ selected = None
 
 is_active = tk.BooleanVar(value=True)
 
-subsystem_keybind = tk.StringVar(value=config.get_str('subsystem_keybind') or 'l')
+subsystem_keybind = tk.StringVar(value=config.get_str('subsystem_keybind') or 'z')
 trigger_power_plant = tk.StringVar(value=config.get_str('trigger_power_plant') or 'k')
 trigger_fsd = tk.StringVar(value=config.get_str('trigger_fsd') or '')
 trigger_thrusters = tk.StringVar(value=config.get_str('trigger_thrusters') or '')
@@ -40,7 +38,7 @@ def plugin_start3(plugin_dir):
     listener = Listener(handle_key_press)
     listener.start()
 
-    return PLUGIN_NAME
+    return 'TargetSubmodules'
 
 
 def plugin_stop():
