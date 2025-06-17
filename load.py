@@ -134,20 +134,20 @@ def plugin_prefs(parent, cmdr, is_beta):
     frame.columnconfigure(1, weight=2)
 
     nb.Label(frame, text='Subsystem targeting keybind:').grid(padx=10, pady=15, row=0, sticky=tk.E)
-    nb.EntryMenu(frame, textvariable=subsystem_keybind, justify='center').grid(padx=10, pady=15, row=0, column=1, sticky=tk.W)
+    nb.EntryMenu(frame, textvariable=subsystem_keybind, justify='center', width=2).grid(padx=10, pady=15, row=0, column=1, sticky=tk.W)
 
     ttk.Separator(frame, orient=tk.HORIZONTAL).grid(columnspan=2, padx=20, pady=10, sticky=tk.EW)
 
     nb.Label(frame, text='Subsystem triggers').grid(columnspan=2, padx=40, pady=10, row=2, sticky=tk.EW)
 
     nb.Label(frame, text='Power plant:').grid(padx=10, row=3, sticky=tk.E)
-    nb.EntryMenu(frame, textvariable=trigger_power_plant, justify='center').grid(padx=10, pady=5, row=3, column=1, sticky=tk.W)
+    nb.EntryMenu(frame, textvariable=trigger_power_plant, justify='center', width=2).grid(padx=10, pady=5, row=3, column=1, sticky=tk.W)
 
     nb.Label(frame, text='FSD:').grid(padx=10, row=4, sticky=tk.E)
-    nb.EntryMenu(frame, textvariable=trigger_fsd, justify='center').grid(padx=10, pady=5, row=4, column=1, sticky=tk.W)
+    nb.EntryMenu(frame, textvariable=trigger_fsd, justify='center', width=2).grid(padx=10, pady=5, row=4, column=1, sticky=tk.W)
 
     nb.Label(frame, text='Thrusters:').grid(padx=10, row=5, sticky=tk.E)
-    nb.EntryMenu(frame, textvariable=trigger_thrusters, justify='center').grid(padx=10, pady=5, row=5, column=1, sticky=tk.W)
+    nb.EntryMenu(frame, textvariable=trigger_thrusters, justify='center', width=2).grid(padx=10, pady=5, row=5, column=1, sticky=tk.W)
 
     nb.Label(
         frame,
