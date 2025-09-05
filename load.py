@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from pynput.keyboard import KeyCode, Listener, Controller
+import time
 
 try:
     import monitor
@@ -58,6 +59,7 @@ def journal_entry(cmdrname, is_beta, system, station, entry, state):
     if not entry['TargetLocked']:
         target = None
         selected = None
+
         return
 
     if 'Subsystem' in entry:
@@ -65,6 +67,8 @@ def journal_entry(cmdrname, is_beta, system, station, entry, state):
 
         if target:
             trigger_submodule_targeting()
+    else:
+        selected = None
 
 
 def is_game_running():
@@ -83,6 +87,7 @@ def trigger_submodule_targeting():
         key = subsystem_keybind.get()[:1]
 
         keyboard.press(key)
+        time.sleep(0.075)
         keyboard.release(key)
 
 
@@ -132,6 +137,9 @@ def plugin_prefs(parent, cmdr, is_beta):
     frame = nb.Frame(parent)
     frame.columnconfigure(0, weight=1)
     frame.columnconfigure(1, weight=2)
+    frame.columnconfigure(1, weight=3)
+    frame.columnconfigure(1, weight=4)
+    frame.columnconfigure(1, weight=5)
 
     nb.Label(frame, text='Subsystem targeting keybind:').grid(padx=10, pady=15, row=0, sticky=tk.E)
     nb.EntryMenu(frame, textvariable=subsystem_keybind, justify='center', width=2).grid(padx=10, pady=15, row=0, column=1, sticky=tk.W)
