@@ -25,6 +25,7 @@ keyboard = Controller()
 
 target = None
 selected = None
+triggered_at = None
 
 is_active = tk.BooleanVar(value=True)
 
@@ -65,8 +66,7 @@ def journal_entry(cmdrname, is_beta, system, station, entry, state):
     if 'Subsystem' in entry:
         selected = entry['Subsystem']
 
-        if target:
-            trigger_submodule_targeting()
+        trigger_submodule_targeting()
     else:
         selected = None
 
@@ -79,11 +79,19 @@ def is_game_running():
 
 
 def trigger_submodule_targeting():
-    global keyboard, subsystem_keybind, selected, target
+    global keyboard, subsystem_keybind, selected, target, triggered_at
+
+
+    if not target:
+        return
 
     if selected and selected.startswith(target):
         target = None
     else:
+        if triggered_at and time.time() - triggered_at < 0.5:
+            return
+
+        triggered_at = time.time()
         key = subsystem_keybind.get()[:1]
 
         keyboard.press(key)

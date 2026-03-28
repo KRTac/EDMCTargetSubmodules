@@ -4,12 +4,10 @@ import logging
 from config import appname
 
 
-PLUGIN_NAME = os.path.basename(os.path.dirname(__file__))
-
 class Log(object):
 
     def __init__(self):
-        self.logger = logging.getLogger(f'{appname}.{PLUGIN_NAME}')
+        self.logger = logging.getLogger(f'{appname}.{os.path.basename(os.path.dirname(__file__))}')
         self.logger.setLevel(logging.INFO)
         if not self.logger.hasHandlers():
             logger_channel = logging.StreamHandler()
